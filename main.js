@@ -5,15 +5,22 @@ x = length of wall
 y = height of wall
 a = length of tile
 b = height of tile
-For anyone that has done some tiling, don't worry about grout joints in your calculation!
-Remember walls and tiles will all be greater than zero in any given dimension. If any dimension is zero or negative return there has been a measurement error, so you should return null.
+Walls and tiles should always be greater than zero in any given dimension - if any dimension is zero or a negative number, there must have been a measurement error, so return null.
+You should return a whole number of tiles with no decimal point.
+For anyone that has done some real life tiling, don't worry about grout joints in your calculation!
 */
 //👉 Write the function your CodeWarriors will start with below here:
 export function howManyTiles ([x,y,a,b]) {
+    let input = [x,y,a,b]
+    let filter = input.filter(x => x <= 0)
+    if (filter.length !== 0) {
+        return null
+    }
     let wall = x*y
     let tile = a*b
     let total = wall/tile
-    numberOfTiles = Math.ceil(total)
+    let numberOfTiles = Math.ceil(total)
     return numberOfTiles
     }
 
+console.log(`Test: ${howManyTiles([3,1.5,3,0.2])}`)
